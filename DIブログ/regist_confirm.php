@@ -18,7 +18,7 @@
             
             <p>メールアドレス <?php echo $_POST['mail']; ?></p>
             
-            <p>パスワード <?php echo $_POST['password']; ?></p>
+            <p>パスワード <?php echo password_hash($_POST['password'], PASSWORD_DEFAULT); ?></p>
             
             <p>性別 <?php echo $_POST['gender']; ?></p>
             
@@ -33,6 +33,9 @@
             <p>アカウント権限 <?php echo $_POST['authority']; ?></p>
             
             <form method="post" action="regist.php">
+                <?php foreach ($_POST as $key => $value): ?>
+                    <input type="hidden" name="<?php echo $key; ?>" value="<?php echo ($value); ?>">
+                <?php endforeach; ?>
                 <input type ="submit" class ="" value ="前に戻る">
             </form>
             
